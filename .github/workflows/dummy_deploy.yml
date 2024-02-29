@@ -14,6 +14,7 @@ jobs:
         id: check_time
         run: |
           current_hour=$(date +"%H")
+          echo $current_hour
           if [ "$current_hour" -ge 17 ]; then
             echo "::set-output name=stop_deployment::true"
           else
