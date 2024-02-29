@@ -16,10 +16,10 @@ jobs:
           current_hour=$(TZ=Asia/Kolkata date +"%H")
           echo $current_hour
           if [ "$current_hour" -ge 17 ]; then
-            echo "::set-output name=stop_deployment::true"
+            echo "stop_deployment=true" >> $GITHUB_OUTPUT
             exit 0
           else
-            echo "::set-output name=stop_deployment::false"
+            echo "stop_deployment=false" >> $GITHUB_OUTPUT
           fi
       - name: My Deployment
         if: steps.check_time.outputs.stop_deployment != 'true'
