@@ -8,6 +8,7 @@ on:
 jobs:
   dummy_deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check if it's past 5 PM
         id: check_time
