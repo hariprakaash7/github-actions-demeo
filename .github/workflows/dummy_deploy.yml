@@ -1,9 +1,9 @@
 name: Dummy Deploy
+
 on:
   push:
-    branches: |
+    branches:
       - main
-  workflow_dispatch:
 
 jobs:
   dummy_deploy:
@@ -23,3 +23,5 @@ jobs:
       - name: Stop deployment if past 5 PM
         if: steps.check_time.outputs.stop_deployment == 'true'
         run: exit 0
+      - name: My Deployment
+        run : echo "Hello"
