@@ -13,7 +13,7 @@ jobs:
       - name: Check if it's past 5 PM
         id: check_time
         run: |
-          current_hour=$(TZ=TZ=Asia/Kolkata date +"%H")
+          current_hour=$(TZ=Asia/Kolkata date +"%H")
           echo $current_hour
           if [ "$current_hour" -ge 17 ]; then
             echo "::set-output name=stop_deployment::true"
