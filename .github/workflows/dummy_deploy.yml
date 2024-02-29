@@ -22,4 +22,5 @@ jobs:
             echo "::set-output name=stop_deployment::false"
           fi
       - name: My Deployment
+        if: steps.check_time.outputs.stop_deployment != 'true'
         run : echo "Hello"
