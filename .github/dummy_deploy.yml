@@ -1,0 +1,22 @@
+name: Dummy Deploy
+on:
+  push:
+    branches: |
+      - main
+  workflow_dispatch:
+
+jobs:
+  dummy_deploy:
+    steps:
+      - name: Check if it's past 5 PM
+        id: check_time
+        run: |
+          current_hour=$(date +"%H")
+          if [ "$current_hour" -ge 17 ]; then
+            echo "::set-output name=stop_deployment::true"
+          else
+            echo "::set-output name=stop_deployment::false"
+          fi
+      - name: Stop deployment if past 5 PM
+        if: steps.check_time.outputs.stop_deployment == 'true'
+        run: exit 0
